@@ -690,6 +690,47 @@
     </inertial>
   </link>
 
+  <!-- Drive wheel axle -->
+  <!-- <link name="drive_wheel_axle_1_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.01025" length="0.00935"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.01025" length="0.00935"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.010"/>
+      <inertia ixx="3.4e-07" ixy="0.0e+00" ixz="0.0e+00" iyy="3.4e-07" iyz="0.0e+00" izz="5.3e-07"/>
+    </inertial>
+  </link> -->
+
+  <!-- <link name="drive_wheel_axle_2_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.01025" length="0.00935"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.01025" length="0.00935"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.010"/>
+      <inertia ixx="3.4e-07" ixy="0.0e+00" ixz="0.0e+00" iyy="3.4e-07" iyz="0.0e+00" izz="5.3e-07"/>
+    </inertial>
+  </link> -->
+  
   <!-- Drive wheels link -->
   <link name="right_wheel_link">
     <visual>
@@ -930,7 +971,7 @@
   <link name="lidar_support_link">
     <visual>
       <geometry>
-        <mesh filename="package://ros2_urdf_project/meshes/lds_base.dae" scale="0.5 0.5 0.5"/>
+        <mesh filename="package://ros2_urdf_project/meshes/lds_base.dae" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark"/>
     </visual>
@@ -951,7 +992,7 @@
   <link name="lidar_spinner_link">
     <visual>
       <geometry>
-        <mesh filename="package://ros2_urdf_project/meshes/lds_top.dae" scale="0.5 0.5 0.5"/>
+        <mesh filename="package://ros2_urdf_project/meshes/lds_top.dae" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="grey"/>
     </visual>
@@ -1035,7 +1076,7 @@
 
   <!-- Wheel joint -->
   <joint name="right_wheel_joint" type="continuous">
-    <origin rpy="1.571 0 0" xyz="-0.015 0.026 0"/>
+    <origin rpy="1.571 0 0" xyz="-0.015 0.0259 0"/>
     <parent link="drive_motor_1_link"/>
     <child link="right_wheel_link"/>
     <axis rpy="0 0 0" xyz="1 0 0"/>
@@ -1044,7 +1085,7 @@
   </joint>
 
   <joint name="left_wheel_joint" type="continuous">
-    <origin rpy="1.571 0 0" xyz="-0.015 -0.026 0"/>
+    <origin rpy="1.571 0 0" xyz="-0.015 -0.0259 0"/>
     <parent link="drive_motor_2_link"/>
     <child link="left_wheel_link"/>
     <axis rpy="0 0 0" xyz="1 0 0"/>
@@ -1202,16 +1243,15 @@
 
   <!-- Lidar -->
   <joint name="lidar_support_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0.01735"/>
+    <origin rpy="0 0 3.142" xyz="0 0 0.01735"/>
     <parent link="chassis_plate_4_link"/>
     <child link="lidar_support_link"/>
   </joint>
 
   <joint name="lidar_spinner_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0.02225"/>
+    <origin rpy="0 0 3.142" xyz="0 0 0.02225"/>
     <parent link="lidar_support_link"/>
     <child link="lidar_spinner_link"/>
   </joint>
-
 
 </robot>

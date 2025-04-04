@@ -5,19 +5,17 @@ from launch import LaunchDescription
 from launch.substitutions import Command
 from launch_ros.actions import Node
 
-# this is the function launch  system will look for
 def generate_launch_description():
-
-    ####### DATA INPUT ##########
     urdf_file = 'tb3_burger.urdf'
     package_description = "ros2_urdf_project"
 
-    ####### DATA INPUT END ##########
-    print("Fetching URDF ==>")
-    robot_desc_path = os.path.join(get_package_share_directory(package_description), "urdf", urdf_file)
+    robot_desc_path = os.path.join(
+        get_package_share_directory(package_description), "urdf", urdf_file
+    )
 
-    # Robot State Publisher
+    robot_description_content = Command(['xacro ', robot_desc_path])
 
+    # Robot State Publisher node
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -27,9 +25,15 @@ def generate_launch_description():
         output="screen"
     )
 
-    # create and return launch description object
-    return LaunchDescription(
-        [            
-            robot_state_publisher_node
-        ]
+    # Joint State Publisher GUI node
+    joint_state_publisher_gui_node = Node(
+        package='joint_state_publisher_gui',
+        executable='joint_state_publisher_gui',
+        name='joint_state_publisher_gui',
+        output='screen'
     )
+
+    return LaunchDescription([
+        joint_state_publisher_gui_node,
+        robot_state_publisher_node
+    ])
