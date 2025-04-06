@@ -13,8 +13,6 @@ def generate_launch_description():
         get_package_share_directory(package_description), "urdf", urdf_file
     )
 
-    # robot_description_content = Command(['xacro ', robot_desc_path])
-
     # Robot State Publisher node
     robot_state_publisher_node = Node(
         package='robot_state_publisher',

@@ -1005,12 +1005,12 @@
   </gazebo>
 
   <!-- IMU chip link -->
-  <!-- <link name="imu_chip_link">
+  <link name="imu_chip_link">
     <visual>
       <geometry>
         <box size="0.005 0.005 0.0025"/>
       </geometry>
-      <material name="grey"/>
+      <material name="blue"/>
     </visual>
 
     <collision>
@@ -1023,7 +1023,11 @@
       <mass value="0.002"/>
       <inertia ixx="5.2e-09" ixy="0.0e+00" ixz="0.0e+00" iyy="5.2e-09" iyz="0.0e+00" izz="8.3e-09"/>
     </inertial>
-  </link> -->
+  </link>
+
+  <gazebo reference="imu_chip_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
 
   <!-- Raspberry Pi board link -->
   <link name="raspi_board_link">
@@ -1051,7 +1055,7 @@
   </gazebo>
 
   <!-- Lidar USB board link -->
-  <link name="lidar_usb_board_link">
+  <!-- <link name="lidar_usb_board_link">
     <visual>
       <geometry>
         <box size="0.018 0.030 0.0045"/>
@@ -1073,7 +1077,7 @@
 
   <gazebo reference="lidar_usb_board_link">
     <material>Gazebo/Blue</material>
-  </gazebo>
+  </gazebo> -->
 
   <!-- Camera support link -->
   <link name="camera_support_link">
@@ -1212,64 +1216,64 @@
   </joint>
 
   <joint name="spacer45_1_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.06375 -0.025 0.018"/>
+    <origin rpy="0 0 0" xyz="-0.06375 -0.025 0.018"/>
     <parent link="chassis_plate_1_link"/>
     <child link="spacer45_1_link"/>
   </joint>
 
   <joint name="spacer45_2_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.06375 0.025 0.018"/>
+    <origin rpy="0 0 0" xyz="-0.06375 0.025 0.018"/>
     <parent link="chassis_plate_1_link"/>
     <child link="spacer45_2_link"/>
   </joint>
 
   <joint name="spacer45_3_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.06375 -0.025 0.018"/>
+    <origin rpy="0 0 0" xyz="0.06375 -0.025 0.018"/>
     <parent link="chassis_plate_1_link"/>
     <child link="spacer45_3_link"/>
   </joint>
 
   <joint name="spacer45_4_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.06375 0.025 0.018"/>
+    <origin rpy="0 0 0" xyz="0.06375 0.025 0.018"/>
     <parent link="chassis_plate_1_link"/>
     <child link="spacer45_4_link"/>
   </joint>
 
   <!-- Drive motors joints-->
   <joint name="drive_motor_1_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.0255 0.05175 0.01875"/>
+    <origin rpy="0 0 0" xyz="0.0255 0.05175 0.01875"/>
     <parent link="chassis_plate_1_link"/>
     <child link="drive_motor_1_link"/>
   </joint>
 
   <joint name="drive_motor_2_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.0255 -0.05175 0.01875"/>
+    <origin rpy="0 0 0" xyz="0.0255 -0.05175 0.01875"/>
     <parent link="chassis_plate_1_link"/>
     <child link="drive_motor_2_link"/>
   </joint>
 
   <!-- Wheel joint -->
   <joint name="right_wheel_joint" type="continuous">
-    <origin rpy="0 1.571 1.571" xyz="-0.012 0.0259 0"/>
+    <origin rpy="0 1.571 1.571" xyz="0.012 0.0259 0"/>
     <parent link="drive_motor_1_link"/>
     <child link="right_wheel_link"/>
-    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
     <limit effort="10000" velocity="1000"/>
     <joint_properties damping="1.0" friction="1.0"/>
   </joint>
   
   <joint name="left_wheel_joint" type="continuous">
-    <origin rpy="0 1.571 1.571" xyz="-0.012 -0.0259 0"/>
+    <origin rpy="0 1.571 1.571" xyz="0.012 -0.0259 0"/>
     <parent link="drive_motor_2_link"/>
     <child link="left_wheel_link"/>
-    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
     <limit effort="10000" velocity="1000"/>
     <joint_properties damping="1.0" friction="1.0"/>
   </joint>
 
   <!-- Caster wheel joint -->
   <joint name="caster_wheel_support_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.04875 0 -0.0085"/>
+    <origin rpy="0 0 0" xyz="-0.04875 0 -0.0085"/>
     <parent link="chassis_plate_1_link"/>
     <child link="caster_wheel_support_link"/>
   </joint>
@@ -1303,7 +1307,7 @@
 
   <!-- Battery joint -->
   <joint name="battery_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.011625 0 0.01825"/>
+    <origin rpy="0 0 0" xyz="0.011625 0 0.01825"/>
     <parent link="chassis_plate_1_link"/>
     <child link="battery_link"/>
   </joint>
@@ -1316,25 +1320,25 @@
   </joint>
 
   <joint name="spacer35_1_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.024 -0.06375 0.018"/>
+    <origin rpy="0 0 0" xyz="-0.024 -0.06375 0.018"/>
     <parent link="chassis_plate_2_link"/>
     <child link="spacer35_1_link"/>
   </joint>
 
   <joint name="spacer35_2_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.024 0.06375 0.018"/>
+    <origin rpy="0 0 0" xyz="-0.024 0.06375 0.018"/>
     <parent link="chassis_plate_2_link"/>
     <child link="spacer35_2_link"/>
   </joint>
 
   <joint name="spacer35_3_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.06375 -0.0125 0.018"/>
+    <origin rpy="0 0 0" xyz="0.06375 -0.0125 0.018"/>
     <parent link="chassis_plate_2_link"/>
     <child link="spacer35_3_link"/>
   </joint>
 
   <joint name="spacer35_4_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.06375 0.0125 0.018"/>
+    <origin rpy="0 0 0" xyz="0.06375 0.0125 0.018"/>
     <parent link="chassis_plate_2_link"/>
     <child link="spacer35_4_link"/>
   </joint>
@@ -1365,52 +1369,52 @@
   </joint>
 
   <joint name="spacer45_7_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.06375 -0.025 0.018"/>
+    <origin rpy="0 0 0" xyz="0.06375 -0.025 0.018"/>
     <parent link="chassis_plate_3_link"/>
     <child link="spacer45_7_link"/>
   </joint>
 
   <joint name="spacer45_8_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.06375 0.025 0.018"/>
+    <origin rpy="0 0 0" xyz="0.06375 0.025 0.018"/>
     <parent link="chassis_plate_3_link"/>
     <child link="spacer45_8_link"/>
   </joint>
 
   <joint name="spacer45_9_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.024 -0.06375 0.018"/>
+    <origin rpy="0 0 0" xyz="0.024 -0.06375 0.018"/>
     <parent link="chassis_plate_3_link"/>
     <child link="spacer45_9_link"/>
   </joint>
 
   <joint name="spacer45_10_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.024 0.06375 0.018"/>
+    <origin rpy="0 0 0" xyz="0.024 0.06375 0.018"/>
     <parent link="chassis_plate_3_link"/>
     <child link="spacer45_10_link"/>
   </joint>
 
   <!-- Raspberry Pi board joint -->
   <joint name="raspi_board_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.030 0 0.01475"/>
+    <origin rpy="0 0 0" xyz="-0.030 0 0.01475"/>
     <parent link="chassis_plate_3_link"/>
     <child link="raspi_board_link"/>
   </joint>
 
   <!-- Lidar USB board joint -->
-  <joint name="lidar_usb_board_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.015 0 0.00675"/>
+  <joint name="imu_chip_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.015 0 0.00675"/>
     <parent link="chassis_plate_3_link"/>
-    <child link="lidar_usb_board_link"/>
+    <child link="imu_chip_link"/>
   </joint>
 
   <!-- Camera joint -->
   <joint name="camera_support_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.06625 0 0.01"/>
+    <origin rpy="0 0 0" xyz="0.06625 0 0.01"/>
     <parent link="chassis_plate_3_link"/>
     <child link="camera_support_link"/>
   </joint>
 
   <joint name="camera_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.005 0 -0.0075"/>
+    <origin rpy="0 0 0" xyz="0.005 0 -0.0075"/>
     <parent link="camera_support_link"/>
     <child link="camera_link"/>
   </joint>
@@ -1439,7 +1443,6 @@
   </joint>
 
   <!-- PLUGINS -->
-
   <!-- Joint state publisher -->
   <gazebo>
     <plugin name="tb3_burger_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
@@ -1457,7 +1460,6 @@
   </gazebo>
 
   <!-- Differential drive -->
-
   <gazebo>
     <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
 

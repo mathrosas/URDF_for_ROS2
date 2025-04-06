@@ -29,9 +29,17 @@ def generate_launch_description():
                    ]
     )
 
+    # spawn_controller_velocity = Node(
+    #     package="controller_manager",
+    #     executable="spawner",
+    #     arguments=["velocity_controller"],
+    #     output="screen",
+    # )
+
     # create and return launch description object
     return LaunchDescription(
         [
             spawn_robot
+            # spawn_controller_velocity
         ]
     )
