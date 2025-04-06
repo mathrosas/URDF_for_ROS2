@@ -752,6 +752,14 @@
     </inertial>
   </link>
 
+  <gazebo reference="right_wheel">
+    <kp>1000000000000000000000000000.0</kp>
+    <kd>1000000000000000000000000000.0</kd>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
   <link name="left_wheel_link">
     <visual>
       <geometry>
@@ -771,6 +779,14 @@
       <inertia ixx="7.5e-06" ixy="0.0e+00" ixz="0.0e+00" iyy="7.5e-06" iyz="0.0e+00" izz="1.4e-05"/>
     </inertial>
   </link>
+
+  <gazebo reference="left_wheel">
+    <kp>1000000000000000000000000000.0</kp>
+    <kd>1000000000000000000000000000.0</kd>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
 
   <!-- Caster wheel support link -->
   <link name="caster_wheel_support_link">
@@ -794,52 +810,90 @@
   </link>
 
   <!-- Caster wheel link -->
-  <link name="caster_wheel_link">
+  <link name="caster_yaw_link">
+      <visual>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>          
+          <cylinder length="0.001" radius="0.0045000000000000005"/>
+        </geometry>
+        <material name="blue"/>
+      </visual>
+
+      <collision>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="0.001" radius="0.0045000000000000005"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+          <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+          <mass value="0.001"/>
+          <inertia ixx="5.145833333333334e-09" ixy="0" ixz="0" iyy="5.145833333333334e-09" iyz="0" izz="1.0125000000000003e-08"/>
+      </inertial>
+  </link>
+
+  <gazebo reference="caster_yaw_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <link name="caster_roll_link">
+      <visual>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="0.001" radius="0.0045000000000000005"/>
+        </geometry>
+        <material name="red"/>
+      </visual>
+
+      <collision>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="0.001" radius="0.0045000000000000005"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+          <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+          <mass value="0.001"/>
+          <inertia ixx="5.145833333333334e-09" ixy="0" ixz="0" iyy="5.145833333333334e-09" iyz="0" izz="1.0125000000000003e-08"/>
+      </inertial>
+  </link>
+
+  <gazebo reference="caster_roll_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <link name="caster_pitch_link">
     <visual>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
         <sphere radius="0.005"/>
       </geometry>
       <material name="grey"/>
     </visual>
-    
+
     <collision>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
         <sphere radius="0.005"/>
       </geometry>
     </collision>
-    
+
     <inertial>
-      <mass value="0.010"/>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <mass value="0.010"/>
       <inertia ixx="1.0e-07" ixy="0.0e+00" ixz="0.0e+00" iyy="1.0e-07" iyz="0.0e+00" izz="1.0e-07" />
     </inertial>
   </link>
 
-  <link name="caster_yaw_link">
-      <visual>
-        <geometry>          
-          <cylinder length="0.001" radius="0.0025"/>
-        </geometry>
-        <material name="blue"/>
-      </visual>
-  </link>
-
-  <link name="caster_roll_link">
-      <visual>
-        <geometry>
-          <cylinder length="0.001" radius="0.0025"/>
-        </geometry>
-        <material name="red"/>
-      </visual>
-  </link>
-
-  <link name="caster_pitch_link">
-    <visual>
-      <geometry>
-        <sphere radius="0.005"/>
-      </geometry>
-      <material name="green"/>
-    </visual>
-  </link>
+  <gazebo reference="caster_pitch_link">
+    <kp>1e+27</kp>
+    <kd>1e+27</kd>
+    <mu1>0.5</mu1>
+    <mu2>0.5</mu2>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
 
   <!-- Control board link -->
   <link name="control_board_link">
@@ -971,7 +1025,8 @@
   <link name="lidar_support_link">
     <visual>
       <geometry>
-        <mesh filename="package://ros2_urdf_project/meshes/lds_base.dae" scale="0.001 0.001 0.001"/>
+        <!-- <mesh filename="package://ros2_urdf_project/meshes/lds_base.dae" scale="0.001 0.001 0.001"/> -->
+        <box size="0.0947 0.0727 0.0257"/>
       </geometry>
       <material name="dark"/>
     </visual>
@@ -992,9 +1047,10 @@
   <link name="lidar_spinner_link">
     <visual>
       <geometry>
-        <mesh filename="package://ros2_urdf_project/meshes/lds_top.dae" scale="0.001 0.001 0.001"/>
+        <!-- <mesh filename="package://ros2_urdf_project/meshes/lds_top.dae" scale="0.001 0.001 0.001"/> -->
+        <cylinder radius="0.0327" length="0.0188"/>
       </geometry>
-      <material name="grey"/>
+      <material name="dark"/>
     </visual>
 
     <collision>
@@ -1076,21 +1132,21 @@
 
   <!-- Wheel joint -->
   <joint name="right_wheel_joint" type="continuous">
-    <origin rpy="1.571 0 0" xyz="-0.015 0.0259 0"/>
+    <origin rpy="0 1.571 1.571" xyz="-0.012 0.0259 0"/>
     <parent link="drive_motor_1_link"/>
     <child link="right_wheel_link"/>
-    <axis rpy="0 0 0" xyz="1 0 0"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
     <limit effort="10000" velocity="1000"/>
-    <dynamics damping="1.0" friction="1.0"/>
+    <joint_properties damping="1.0" friction="1.0"/>
   </joint>
-
+  
   <joint name="left_wheel_joint" type="continuous">
-    <origin rpy="1.571 0 0" xyz="-0.015 -0.0259 0"/>
+    <origin rpy="0 1.571 1.571" xyz="-0.012 -0.0259 0"/>
     <parent link="drive_motor_2_link"/>
     <child link="left_wheel_link"/>
-    <axis rpy="0 0 0" xyz="1 0 0"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
     <limit effort="10000" velocity="1000"/>
-    <dynamics damping="1.0" friction="1.0"/>
+    <joint_properties damping="1.0" friction="1.0"/>
   </joint>
 
   <!-- Caster wheel joint -->
@@ -1100,36 +1156,30 @@
     <child link="caster_wheel_support_link"/>
   </joint>
 
-  <joint name="caster_wheel_joint" type="fixed">
+  <joint name="caster_yaw_joint" type="continuous">
     <origin rpy="0 0 0" xyz="0 0 -0.004"/>
     <parent link="caster_wheel_support_link"/>
-    <child link="caster_wheel_link"/>
-  </joint>
-
-  <joint name="caster_yaw_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="0 0 -0.004" />
-    <parent link="caster_wheel_support_link" />
-    <child link="caster_yaw_link" />
-    <axis xyz="0 0 1" />
-    <limit effort="1000.0" velocity="100.0" />
+    <child link="caster_yaw_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" velocity="100.0"/>
     <dynamics damping="0.0" friction="0.1"/>
   </joint>
 
   <joint name="caster_roll_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="0 0 0" />
-    <parent link="caster_yaw_link" />
-    <child link="caster_roll_link" />
-    <axis xyz="1 0 0" />
-    <limit effort="1000.0" velocity="100.0" />
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="caster_yaw_link"/>
+    <child link="caster_roll_link"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1000.0" velocity="100.0"/>
     <dynamics damping="0.0" friction="0.1"/>
   </joint>
 
   <joint name="caster_pitch_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="0 0 0" />
-    <parent link="caster_roll_link" />
-    <child link="caster_pitch_link" />
-    <axis xyz="0 1 0" />
-    <limit effort="1000.0" velocity="100.0" />
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="caster_roll_link"/>
+    <child link="caster_pitch_link"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" velocity="100.0"/>
     <dynamics damping="0.0" friction="0.1"/>
   </joint>
 
@@ -1248,10 +1298,13 @@
     <child link="lidar_support_link"/>
   </joint>
 
-  <joint name="lidar_spinner_joint" type="fixed">
-    <origin rpy="0 0 3.142" xyz="0 0 0.02225"/>
+  <joint name="lidar_spinner_joint" type="continuous">
+    <origin rpy="0 0 0" xyz="0 0 0.02225"/>
     <parent link="lidar_support_link"/>
     <child link="lidar_spinner_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10.0" velocity="2.0"/>
+    <dynamics friction="0.01"/>
   </joint>
 
 </robot>

@@ -13,7 +13,7 @@ def generate_launch_description():
         get_package_share_directory(package_description), "urdf", urdf_file
     )
 
-    robot_description_content = Command(['xacro ', robot_desc_path])
+    # robot_description_content = Command(['xacro ', robot_desc_path])
 
     # Robot State Publisher node
     robot_state_publisher_node = Node(
@@ -26,14 +26,14 @@ def generate_launch_description():
     )
 
     # Joint State Publisher GUI node
-    joint_state_publisher_gui_node = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        name='joint_state_publisher_gui',
-        output='screen'
-    )
+    # joint_state_publisher_gui_node = Node(
+    #     package='joint_state_publisher_gui',
+    #     executable='joint_state_publisher_gui',
+    #     name='joint_state_publisher_gui',
+    #     output='screen'
+    # )
 
     return LaunchDescription([
-        joint_state_publisher_gui_node,
+        # joint_state_publisher_gui_node,
         robot_state_publisher_node
     ])
