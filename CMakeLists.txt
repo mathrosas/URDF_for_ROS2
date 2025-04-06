@@ -11,6 +11,10 @@ find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
 find_package(rclcpp REQUIRED)
 
+find_package(ros2_control REQUIRED)
+find_package(gazebo_ros2_control REQUIRED)
+find_package(velocity_controllers REQUIRED)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
