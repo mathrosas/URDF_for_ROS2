@@ -980,12 +980,12 @@
   </link>
 
   <!-- Camera support link -->
-  <!-- <link name="camera_support_link">
+  <link name="camera_support_link">
     <visual>
       <geometry>
         <box size="0.005 0.030 0.015"/>
       </geometry>
-      <material name="white"/>
+      <material name="dark"/>
     </visual>
 
     <collision>
@@ -998,10 +998,10 @@
       <mass value="0.010"/>
       <inertia ixx="9.4e-07" ixy="0.0e+00" ixz="0.0e+00" iyy="2.1e-07" iyz="0.0e+00" izz="7.7e-07"/>
     </inertial>
-  </link> -->
+  </link>
 
   <!-- Camera link -->
-  <!-- <link name="camera_link">
+  <link name="camera_link">
     <visual>
       <geometry>
         <box size="0.005 0.030 0.030"/>
@@ -1019,7 +1019,7 @@
       <mass value="0.010"/>
       <inertia ixx="9.4e-07" ixy="0.0e+00" ixz="0.0e+00" iyy="2.1e-07" iyz="0.0e+00" izz="7.7e-07"/>
     </inertial>
-  </link> -->
+  </link>
 
   <!-- Lidar support link -->
   <link name="lidar_support_link">
@@ -1050,7 +1050,7 @@
         <!-- <mesh filename="package://ros2_urdf_project/meshes/lds_top.dae" scale="0.001 0.001 0.001"/> -->
         <cylinder radius="0.0327" length="0.0188"/>
       </geometry>
-      <material name="dark"/>
+      <material name="black"/>
     </visual>
 
     <collision>
@@ -1210,13 +1210,13 @@
   </joint>
 
   <joint name="spacer35_3_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.06375 -0.015 0.018"/>
+    <origin rpy="0 0 0" xyz="-0.06375 -0.0125 0.018"/>
     <parent link="chassis_plate_2_link"/>
     <child link="spacer35_3_link"/>
   </joint>
 
   <joint name="spacer35_4_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.06375 0.015 0.018"/>
+    <origin rpy="0 0 0" xyz="-0.06375 0.0125 0.018"/>
     <parent link="chassis_plate_2_link"/>
     <child link="spacer35_4_link"/>
   </joint>
@@ -1282,6 +1282,19 @@
     <origin rpy="0 0 0" xyz="-0.015 0 0.00675"/>
     <parent link="chassis_plate_3_link"/>
     <child link="lidar_usb_board_link"/>
+  </joint>
+
+  <!-- Camera joint -->
+  <joint name="camera_support_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.06625 0 0.01"/>
+    <parent link="chassis_plate_3_link"/>
+    <child link="camera_support_link"/>
+  </joint>
+
+  <joint name="camera_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.005 0 -0.0075"/>
+    <parent link="camera_support_link"/>
+    <child link="camera_link"/>
   </joint>
 
   <!-- Chassis plate 4 joint-->
