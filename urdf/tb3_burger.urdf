@@ -1141,6 +1141,7 @@
 
     <collision>
       <geometry>
+        <!-- <mesh filename="package://ros2_urdf_project/meshes/lds_base.dae" scale="0.001 0.001 0.001"/> -->
         <box size="0.0947 0.0727 0.0257"/>
       </geometry>
     </collision>
@@ -1167,6 +1168,7 @@
 
     <collision>
       <geometry>
+        <!-- <mesh filename="package://ros2_urdf_project/meshes/lds_top.dae" scale="0.001 0.001 0.001"/> -->
         <cylinder radius="0.0327" length="0.0188"/>
       </geometry>
     </collision>
@@ -1253,19 +1255,19 @@
   </joint>
 
   <!-- Wheel joint -->
-  <joint name="right_wheel_joint" type="continuous">
+  <joint name="left_wheel_joint" type="continuous">
     <origin rpy="0 1.571 1.571" xyz="0.012 0.0259 0"/>
     <parent link="drive_motor_1_link"/>
-    <child link="right_wheel_link"/>
+    <child link="left_wheel_link"/>
     <axis rpy="0 0 0" xyz="0 0 1"/>
     <limit effort="10000" velocity="1000"/>
     <joint_properties damping="1.0" friction="1.0"/>
   </joint>
   
-  <joint name="left_wheel_joint" type="continuous">
+  <joint name="right_wheel_joint" type="continuous">
     <origin rpy="0 1.571 1.571" xyz="0.012 -0.0259 0"/>
     <parent link="drive_motor_2_link"/>
-    <child link="left_wheel_link"/>
+    <child link="right_wheel_link"/>
     <axis rpy="0 0 0" xyz="0 0 1"/>
     <limit effort="10000" velocity="1000"/>
     <joint_properties damping="1.0" friction="1.0"/>
