@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+<xacro:property name="drive_width" value="0.0465"/>
+<xacro:property name="drive_length" value="0.034"/>
+<xacro:property name="drive_height" value="0.0285"/>
+
+<xacro:macro name="drive_motor" params="drive_motor_name">
+  
+  <link name="${drive_motor_name}_link">
+    <visual>
+      <geometry>
+        <box size="${drive_width} ${drive_length} ${drive_height}"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="${drive_width} ${drive_length} ${drive_height}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.035"/>
+      <inertia ixx="5.5e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="5.5e-05" iyz="0.0e+00" izz="1.1e-04"/>
+    </inertial>
+  </link>
+
+</xacro:macro>
+
+</robot>

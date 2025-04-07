@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+<xacro:property name="wheel_radius" value="0.033"/>
+<xacro:property name="wheel_length" value="0.0178"/>
+
+<xacro:property name="caster_support_width" value="0.030"/>
+<xacro:property name="caster_support_length" value="0.018"/>
+<xacro:property name="caster_support_height" value="0.008"/>
+
+<xacro:property name="dummy_radius" value="0.0045000000000000005"/>
+<xacro:property name="dummy_length" value="0.001"/>
+
+<xacro:macro name="wheel" params="wheel_name">
+  
+  <link name="${wheel_name}_link">
+    <visual>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.025"/>
+      <inertia ixx="7.5e-06" ixy="0.0e+00" ixz="0.0e+00" iyy="7.5e-06" iyz="0.0e+00" izz="1.4e-05"/>
+    </inertial>
+  </link>
+</xacro:macro>
+
+<xacro:macro name="caster_wheel">
+  
+  <link name="caster_wheel_support_link">
+    <visual>
+      <geometry>
+        <box size="${caster_support_width} ${caster_support_length} ${caster_support_height}"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="${caster_support_width} ${caster_support_length} ${caster_support_height}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.010"/>
+      <inertia ixx="3.2e-07" ixy="0.0e+00" ixz="0.0e+00" iyy="8.0e-07" iyz="0.0e+00" izz="1.0e-06"/>
+    </inertial>
+  </link>
+
+  <link name="caster_wheel_yaw_link">
+      <visual>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>          
+          <cylinder radius="${dummy_radius}" length="${dummy_length}"/>
+        </geometry>
+        <material name="blue"/>
+      </visual>
+
+      <collision>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>
+          <cylinder radius="${dummy_radius}" length="${dummy_length}"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+          <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+          <mass value="0.001"/>
+          <inertia ixx="5.145833333333334e-09" ixy="0" ixz="0" iyy="5.145833333333334e-09" iyz="0" izz="1.0125000000000003e-08"/>
+      </inertial>
+  </link>
+
+  <link name="caster_wheel_roll_link">
+      <visual>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>
+          <cylinder radius="${dummy_radius}" length="${dummy_length}"/>
+        </geometry>
+        <material name="red"/>
+      </visual>
+
+      <collision>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>
+          <cylinder radius="${dummy_radius}" length="${dummy_length}"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+          <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+          <mass value="0.001"/>
+          <inertia ixx="5.145833333333334e-09" ixy="0" ixz="0" iyy="5.145833333333334e-09" iyz="0" izz="1.0125000000000003e-08"/>
+      </inertial>
+  </link>
+
+  <link name="caster_wheel_pitch_link">
+    <visual>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.005"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.005"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <mass value="0.010"/>
+      <inertia ixx="1.0e-07" ixy="0.0e+00" ixz="0.0e+00" iyy="1.0e-07" iyz="0.0e+00" izz="1.0e-07" />
+    </inertial>
+  </link>
+
+</xacro:macro>
+
+
+</robot>

@@ -6,11 +6,13 @@ from launch.substitutions import Command
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    urdf_file = 'tb3_burger.urdf'
+    # urdf_file = 'tb3_burger.urdf'
+    xacro_file = 'tb3_burger.urdf.xacro'
     package_description = "ros2_urdf_project"
 
     robot_desc_path = os.path.join(
-        get_package_share_directory(package_description), "urdf", urdf_file
+        # get_package_share_directory(package_description), "urdf", urdf_file
+        get_package_share_directory(package_description), "xacro", xacro_file
     )
 
     # Robot State Publisher node

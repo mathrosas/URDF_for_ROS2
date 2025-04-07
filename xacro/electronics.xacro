@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+<xacro:property name="control_width" value="0.105"/>
+<xacro:property name="control_length" value="0.075"/>
+<xacro:property name="control_height" value="0.016"/>
+
+<xacro:property name="raspi_width" value="0.058"/>
+<xacro:property name="raspi_length" value="0.090"/>
+<xacro:property name="raspi_height" value="0.01935"/>
+
+<xacro:macro name="control_board">
+
+  <link name="control_board_link">
+    <visual>
+      <geometry>
+        <box size="${control_width} ${control_length} ${control_height}"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="${control_width} ${control_length} ${control_height}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.060"/>
+      <inertia ixx="2.9e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="5.6e-05" iyz="0.0e+00" izz="8.3e-05"/>
+    </inertial>
+  </link>
+  
+</xacro:macro>
+
+<xacro:macro name="raspi_board">
+  
+  <link name="raspi_board_link">
+    <visual>
+      <geometry>
+        <box size="${raspi_width} ${raspi_length} ${raspi_height}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="${raspi_width} ${raspi_length} ${raspi_height}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.050"/>
+      <inertia ixx="3.5e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="1.6e-05" iyz="0.0e+00" izz="4.8e-05"/>
+    </inertial>
+  </link>
+  
+</xacro:macro>
+
+</robot>

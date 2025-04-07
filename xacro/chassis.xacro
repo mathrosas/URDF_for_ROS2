@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+<xacro:property name="chassis_width" value="0.1375"/>
+<xacro:property name="chassis_length" value="0.1375"/>
+<xacro:property name="chassis_height" value="0.009"/>
+
+<xacro:property name="battery_width" value="0.100"/>
+<xacro:property name="battery_length" value="0.035"/>
+<xacro:property name="battery_height" value="0.0275"/>
+
+<xacro:property name="drive_width" value="0.0465"/>
+<xacro:property name="drive_length" value="0.034"/>
+<xacro:property name="drive_height" value="0.0285"/>
+
+<xacro:property name="spacer35_radius" value="0.0025"/>
+<xacro:property name="spacer35_length" value="0.035"/>
+
+<xacro:property name="spacer45_radius" value="0.0025"/>
+<xacro:property name="spacer45_length" value="0.045"/>
+
+<xacro:macro name="chassis_plate" params="chassis_plate_name">
+  
+  <link name="${chassis_plate_name}_link">
+    <visual>
+      <geometry>
+        <box size="${chassis_width} ${chassis_length} ${chassis_height}"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="${chassis_width} ${chassis_length} ${chassis_height}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.035"/>
+      <inertia ixx="5.5e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="5.5e-05" iyz="0.0e+00" izz="1.1e-04"/>
+    </inertial>
+  </link>
+
+</xacro:macro>
+
+<xacro:macro name="battery">
+
+  <link name="battery_link">
+    <visual>
+      <geometry>
+        <box size="${battery_width} ${battery_length} ${battery_height}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="${battery_width} ${battery_length} ${battery_height}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.200"/>
+      <inertia ixx="3.3e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="1.8e-04" iyz="0.0e+00" izz="1.9e-04"/>
+    </inertial>
+  </link>
+
+</xacro:macro>
+
+<xacro:macro name="spacer35" params="spacer35_name">
+  
+  <link name="${spacer35_name}_link">
+    <visual>
+      <geometry>
+        <cylinder radius="${spacer35_radius}" length="${spacer35_length}"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="${spacer35_radius}" length="${spacer35_length}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.007"/>
+      <inertia ixx="7.3e-07" ixy="0.0e+00" ixz="0.0e+00" iyy="7.3e-07" iyz="0.0e+00" izz="2.2e-08"/>
+    </inertial>
+  </link>
+
+</xacro:macro>
+
+<xacro:macro name="spacer45" params="spacer45_name">
+  
+  <link name="${spacer45_name}_link">
+    <visual>
+      <geometry>
+        <cylinder radius="${spacer45_radius}" length="${spacer45_length}"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="${spacer45_radius}" length="${spacer45_length}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.009"/>
+      <inertia ixx="1.5e-06" ixy="0.0e+00" ixz="0.0e+00" iyy="1.5e-06" iyz="0.0e+00" izz="2.8e-08"/>
+    </inertial>
+  </link>
+
+</xacro:macro>
+
+</robot>

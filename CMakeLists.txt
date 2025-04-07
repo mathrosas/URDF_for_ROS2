@@ -34,6 +34,7 @@ install(
 	urdf
     meshes
 	config
+	xacro
   DESTINATION
     share/${PROJECT_NAME}/
 )

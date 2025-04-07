@@ -2,10 +2,6 @@
 <robot name="tb3_burger">
 
   <!-- Materials -->
-  <material name="white">
-      <color rgba="1.0 1.0 1.0 1"/>
-  </material>
-  
   <material name="black">
     <color rgba="0 0 0 1"/>
   </material>
@@ -24,22 +20,6 @@
   
   <material name="blue">
     <color rgba="0.0 0.0 0.8 1"/>
-  </material>
-  
-  <material name="green">
-    <color rgba="0.0 0.8 0.0 1"/>
-  </material>
-  
-  <material name="yellow">
-    <color rgba="0.8 0.8 0.0 1"/>
-  </material>
-
-  <material name="magenta">
-    <color rgba="0.8 0.0 0.8 1"/>
-  </material>
-  
-  <material name="cyan">
-    <color rgba="0.0 0.8 0.8 1"/>
   </material>
 
   <!-- Base link -->

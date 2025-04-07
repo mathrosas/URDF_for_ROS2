@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+<xacro:macro name="add_physical_properties" params="shape size length radius mass color">
+
+  <visual>
+    <geometry>
+      <xacro:if value="${shape == 'box'}">
+        <box size="${size}" />
+      </xacro:if>
+      <xacro:if value="${shape == 'cylinder'}">
+        <cylinder length="${length}" radius="${radius}" />
+      </xacro:if>
+      <xacro:if value="${shape == 'sphere'}">
+        <sphere radius="${radius}" />
+      </xacro:if>
+    </geometry>
+    <material name="${color}" />
+  </visual>
+
+  <collision>
+    <geometry>
+      <xacro:if value="${shape == 'box'}">
+        <box size="${size}" />
+      </xacro:if>
+      <xacro:if value="${shape == 'cylinder'}">
+        <cylinder length="${length}" radius="${radius}" />
+      </xacro:if>
+      <xacro:if value="${shape == 'sphere'}">
+        <sphere radius="${radius}" />
+      </xacro:if>
+    </geometry>
+  </collision>
+
+  <inertial>
+    <mass value="${mass}" />
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <inertia
+      ixx="${ixx}" ixy="${ixy}" ixz="${ixz}"
+      iyy="${iyy}" iyz="${iyz}"
+      izz="${izz}" />
+  </inertial>
+
+</xacro:macro>
+  
+</robot>
